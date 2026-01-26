@@ -1201,10 +1201,10 @@ function getRoamerSlotInput()
 
  if (key["3"] or key["numpad3"]) and (not prevKeyRoamerSlot["3"] and not prevKeyRoamerSlot["numpad3"]) then
   leftRoamerSlotArrowColor = "orange"
-  roamerSlotIndex = roamerSlotIndex - 1 < 0 and 2 or roamerSlotIndex - 1
+  roamerSlotIndex = roamerSlotIndex - 1 < 0 and (gameVersion == "SoulSilver" and 3 or 2) or (gameVersion == "SoulSilver" and roamerSlotIndex - 1 == 2) and 1 or roamerSlotIndex - 1 
  elseif (key["4"] or key["numpad4"]) and (not prevKeyRoamerSlot["4"] and not prevKeyRoamerSlot["numpad4"]) then
   rightRoamerSlotArrowColor = "orange"
-  roamerSlotIndex = roamerSlotIndex + 1 > 2 and 0 or roamerSlotIndex + 1
+  roamerSlotIndex = roamerSlotIndex + 1 > 2 and 0 or (gameVersion == "SoulSilver" and roamerSlotIndex + 1 == 2) and 3 or roamerSlotIndex + 1
  end
 
  prevKeyRoamerSlot = key
@@ -1212,7 +1212,7 @@ function getRoamerSlotInput()
  drawArrowLeft(161, -189, leftRoamerSlotArrowColor)
  gui.text(169, -189, "3 - 4")
  drawArrowRight(207, -189, rightRoamerSlotArrowColor)
- gui.text(212, -189, "Slot: "..roamerSlotIndex + 1)
+ gui.text(212, -189, "Slot: "..(roamerSlotIndex + 1 == 4 and 3 or roamerSlotIndex + 1))
 
  return roamerSlotIndex
 end
