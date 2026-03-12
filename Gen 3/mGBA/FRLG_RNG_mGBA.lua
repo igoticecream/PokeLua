@@ -459,7 +459,7 @@ function LCRNGDistance(state0, state1)
   tempCurrentSeed = state1
  end
 
- return dist > 999 and dist - 0x100000000 or dist
+ return dist > 0x7FFFFFFF and dist - 0x100000000 or dist
 end
 
 local initialSeedAddr, tempInitialSeed, advances = 0x2020000, 0, 0
